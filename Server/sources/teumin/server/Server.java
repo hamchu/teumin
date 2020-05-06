@@ -13,7 +13,7 @@ public class Server {
 
     private Server() throws Exception {
         serverSocket = new ServerSocket(8000);
-        connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/temp?useSSL=false", "root", "apmsetup");
+        connection = DriverManager.getConnection("jdbc:mysql://124.63.153.55:3306/teumin?useSSL=false", "root", "apmsetup");
     }
 
     private Coclient accept() throws Exception {

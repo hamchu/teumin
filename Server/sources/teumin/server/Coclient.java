@@ -29,24 +29,49 @@ public class Coclient implements Runnable {
             while (state) {
                 Data data = network.read();
 
-                switch (data.getDataType())
+                switch (data.getDataType()) // case 쌓이면 가독성 내려감. 나중에 구조 적절히 수정함.
                 {
-                    case LOGIN_REQUEST:
-                    {
-                        String sqlstr = "select password from user where id='" + (String)data.getObject(0) + "'";
+                    case LOGIN_REQUEST: {
+                        String sqlstr = "select password, nickname from user where id='" + (String) data.getObject(0) + "'";
                         ResultSet resultSet = statement.executeQuery(sqlstr);
-                        boolean flag = false;
+                        boolean success = false;
+                        String nickname = null;
                         while (resultSet.next()) {
                             String password = resultSet.getString(1);
-                            if (password.equals((String)data.getObject(1)))
-                                flag = true;
+                            if (password.equals((String) data.getObject(1))) {
+                                success = true;
+                                nickname = resultSet.getString(2);
+                                break;
+                            }
                         }
                         resultSet.close();
                         data = new Data(DataType.LOGIN_RESPOND);
-                        data.addObject(flag);
+                        data.addObject(success);
+                        data.addObject(nickname);
                         network.write(data);
                     }
-                        break;
+                    break;
+
+                    case REGISTER_REQUEST: { // TODO: { 아이디, 비밀번호, 닉네임 } 최소 조건 검사
+                        // 동기화 문제..
+                        // 지저분한 코드 문제..
+                        String sqlstr = "select * from user where id='" + (String)data.getObject(0) + "'";
+                        ResultSet resultSet = statement.executeQuery(sqlstr);
+                        boolean success = false;
+                        if (!resultSet.next())
+                        {
+                            success = true;
+
+                            sqlstr = "insert into user values('" + (String)data.getObject(0) + "', '" + (String)data.getObject(1) + "', '" + (String)data.getObject(2) + "')";
+                            statement.executeUpdate(sqlstr);
+                        }
+                        resultSet.close();
+                        data = new Data(DataType.REGISTER_RESPOND);
+                        data.addObject(success);
+                        network.write(data);
+                    }
+                    break;
+
                     default:
                         state = false;
                         break;
