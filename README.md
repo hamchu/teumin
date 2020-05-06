@@ -1,7 +1,9 @@
-# teumin
- 
-푸드트럭 통합 관리 시스템
+## teumin: 푸드트럭 통합 관리 시스템
 
-IDE: Intellij IDEA 2020.1
+### IDE
 
-JDK: Amazon Corretto 8
+* Intellij IDEA 2020.1
+
+### JDK
+
+* Amazon Corretto 8
