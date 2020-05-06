@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="193.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.control.Login">
+<AnchorPane prefHeight="193.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.LoginController">
    <children>
       <HBox alignment="CENTER" layoutX="39.0" layoutY="33.0" spacing="10.0" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="33.0">
          <children>

@@ -1,4 +1,4 @@
-package client.control;
+package teumin.client.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class Register {
+public class RegisterController extends Controller {
 
     @FXML
     private TextField text_id;
