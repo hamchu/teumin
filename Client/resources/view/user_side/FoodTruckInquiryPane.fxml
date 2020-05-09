@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="720.0" maxWidth="819.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.FoodTruckInquiryController">
+   <children>
+      <HBox layoutX="27.0" layoutY="14.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label layoutX="27.0" layoutY="14.0" text="설정된 위치 : " AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="203.0" layoutY="14.0" text="대구시 북구 침산남로">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_test" layoutX="549.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#test" text="변경" />
+         </children>
+      </HBox>
+      <TabPane layoutX="43.0" layoutY="77.0" prefHeight="583.0" prefWidth="733.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab_korean" text="한식">
+               <content>
+                  <ListView fx:id="korean_truck_list" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </Tab>
+          <Tab fx:id="tab_chinese" text="중식">
+               <content>
+                  <ListView fx:id="chinese_truck_list" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </Tab>
+            <Tab fx:id="tab_western" text="양식">
+               <content>
+                  <ListView fx:id="western_truck_list" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="btn_test" layoutX="569.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#test_onClicked" text="test" />
+      <Button fx:id="btn_clear" layoutX="638.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#clear_onClicked" text="clear" />
+   </children>
+</AnchorPane>

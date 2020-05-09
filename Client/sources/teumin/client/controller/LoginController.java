@@ -41,13 +41,25 @@ public class LoginController extends Controller {
 
     @FXML
     void btn_login_onClick(MouseEvent event) throws Exception {
-        login(
+        boolean login_success = login(
                 text_id.getText(),
                 text_password.getText()
         );
+        if(login_success)
+        {
+            Stage stage = (Stage) btn_login.getScene().getWindow(); //get a handle
+            stage.close();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.show();
+            ((Controller)loader.getController()).setNetwork(network);
+            //접속한 id 정보 넘기기..
+        }
     }
 
-    void login(String id, String password) throws Exception {
+    boolean login(String id, String password) throws Exception {
         Data data = null;
 
         data = new Data(DataType.LOGIN_REQUEST);
@@ -66,6 +78,7 @@ public class LoginController extends Controller {
             alert.setContentText("로그인에 성공하였습니다.\n" + (String) data.getObject(1) + " 님 환영합니다.");
             alert.showAndWait();
 
+            return true;
             // TODO
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -75,6 +88,7 @@ public class LoginController extends Controller {
             alert.showAndWait();
 
             text_password.setText(""); // password 입력란 초기화
+            return false;
         }
     }
 
