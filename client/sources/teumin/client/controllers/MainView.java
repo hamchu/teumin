@@ -32,13 +32,13 @@ public class MainView extends Client {
 
     @FXML
     void initialize() throws Exception {
-        loadPane("user_side/Home");
+        loadPane("user_side/HomePane");
     }
 
     @FXML
     void home(MouseEvent event) throws Exception
     {
-        loadPane("user_side/Home");
+        loadPane("user_side/HomePane");
     }
 
     @FXML
