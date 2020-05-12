@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="720.0" maxWidth="819.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.FoodTruckInquiryController">
+<AnchorPane maxHeight="720.0" maxWidth="819.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controllers.user_side.FoodTruckInquiryPane">
    <children>
       <HBox layoutX="27.0" layoutY="14.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
          <children>

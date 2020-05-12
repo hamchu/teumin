@@ -10,10 +10,12 @@ import java.sql.Statement;
 public class Server {
     private ServerSocket serverSocket;
     private Connection connection;
+    private Statement statement;
 
-    private Server() throws Exception {
+    public Server() throws Exception {
         serverSocket = new ServerSocket(8000);
-        connection = DriverManager.getConnection("jdbc:mysql://124.63.153.55:3306/teumin?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
+        //connection = DriverManager.getConnection("jdbc:mysql://124.63.153.55:3306/teumin?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
+        connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/teumin?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
     }
 
     private Coclient accept() throws Exception {

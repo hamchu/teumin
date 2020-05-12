@@ -1,8 +1,7 @@
-package teumin.client.controller;
+package teumin.client.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -10,11 +9,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import teumin.client.Client;
 import teumin.network.Data;
 import teumin.network.DataType;
 
-public class LoginController extends Controller {
+public class Login extends Client {
 
     @FXML
     private TextField text_id;
@@ -32,11 +33,9 @@ public class LoginController extends Controller {
     void text_register_onClick(MouseEvent event) throws Exception {
         Stage stage = new Stage();
         stage.setTitle("회원가입");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RegisterView.fxml"));
-        Scene scene = new Scene(loader.load());
-        stage.setScene(scene);
-        stage.show();
-        ((Controller)loader.getController()).setNetwork(network);
+        stage.setScene(new Scene(loadFxml("Register")));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show(); // TODO test
     }
 
     @FXML
@@ -50,11 +49,8 @@ public class LoginController extends Controller {
             Stage stage = (Stage) btn_login.getScene().getWindow(); //get a handle
             stage.close();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
+            stage.setScene(new Scene(loadFxml("MainView")));
             stage.show();
-            ((Controller)loader.getController()).setNetwork(network);
             //접속한 id 정보 넘기기..
         }
     }
@@ -63,19 +59,19 @@ public class LoginController extends Controller {
         Data data = null;
 
         data = new Data(DataType.LOGIN_REQUEST);
-        data.addObject(id);
-        data.addObject(password);
+        data.add(id);
+        data.add(password);
         network.write(data);
 
         data = network.read();
         if (data.getDataType() != DataType.LOGIN_RESPOND)
             throw new Exception("알 수 없는 응답");
 
-        if ((boolean) data.getObject(0)) {
+        if (data.<Boolean>get(0)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("알림");
             alert.setHeaderText(null);
-            alert.setContentText("로그인에 성공하였습니다.\n" + (String) data.getObject(1) + " 님 환영합니다.");
+            alert.setContentText("로그인에 성공하였습니다.\n" + data.<String>get(1) + " 님 환영합니다.");
             alert.showAndWait();
 
             return true;

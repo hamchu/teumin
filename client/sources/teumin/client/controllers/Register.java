@@ -1,4 +1,4 @@
-package teumin.client.controller;
+package teumin.client.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,10 +7,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import teumin.client.Client;
 import teumin.network.Data;
 import teumin.network.DataType;
 
-public class RegisterController extends Controller {
+public class Register extends Client {
 
     @FXML
     private TextField text_id;
@@ -41,16 +42,16 @@ public class RegisterController extends Controller {
         Data data = null;
 
         data = new Data(DataType.REGISTER_REQUEST);
-        data.addObject(id);
-        data.addObject(password);
-        data.addObject(nickname);
+        data.add(id);
+        data.add(password);
+        data.add(nickname);
         network.write(data);
 
         data = network.read();
         if (data.getDataType() != DataType.REGISTER_RESPOND)
             throw new Exception("알 수 없는 응답");
 
-        if((boolean)data.getObject(0))
+        if(data.<Boolean>get(0))
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("알림");

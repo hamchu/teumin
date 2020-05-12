@@ -2,12 +2,11 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/Client">
-      <sourceFolder url="file://$MODULE_DIR$/Client/sources" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Client/resources" type="java-resource" />
+    <content url="file://$MODULE_DIR$/client">
+      <sourceFolder url="file://$MODULE_DIR$/client/sources" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Network" />
+    <orderEntry type="module" module-name="network" />
   </component>
 </module>

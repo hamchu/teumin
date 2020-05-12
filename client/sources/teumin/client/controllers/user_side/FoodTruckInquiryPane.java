@@ -1,17 +1,16 @@
-package teumin.client.controller;
+package teumin.client.controllers.user_side;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-
-import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
-import teumin.client.controller.Controller;
-import teumin.network.*;
+import teumin.client.Client;
+import teumin.network.Data;
+import teumin.network.DataType;
 
-public class FoodTruckInquiryController extends Controller {
+public class FoodTruckInquiryPane extends Client {
 
     ObservableList list = FXCollections.observableArrayList();
 
@@ -49,13 +48,13 @@ public class FoodTruckInquiryController extends Controller {
         food_truck_list.getItems().clear();
         Data data = null;
         data = new Data(DataType.FOOD_TRUCK_INQUIRY_REQUEST);
-        data.addObject(category);
+        data.add(category);
         network.write(data);
 
         data = network.read();
-        while(!(boolean)data.getObject(0))
+        while(!data.<Boolean>get(0))
         {
-            list.add((String)data.getObject(1));
+            list.add(data.<String>get(1));
             data = network.read();
         }
 

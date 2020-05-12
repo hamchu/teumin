@@ -16,11 +16,11 @@ public class Data implements Serializable {
         return dataType;
     }
 
-    public void addObject(Object object) {
+    public void add(Object object) {
         objects.add(object);
     }
 
-    public Object getObject(int index) {
-        return objects.get(index);
+    public <T> T get(int index) {
+        return (T) objects.get(index);
     }
 }
