@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import teumin.network.Network;
 
@@ -28,6 +29,7 @@ public class Client extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("트럭의민족");
+        stage.getIcons().add(new Image("file:client/resources/icon/teumin.png"));
         stage.setScene(new Scene(loadFxml("Login")));
         stage.show();
     }

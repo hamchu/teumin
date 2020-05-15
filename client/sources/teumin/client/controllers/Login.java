@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -33,6 +34,7 @@ public class Login extends Client {
     void text_register_onClick(MouseEvent event) throws Exception {
         Stage stage = new Stage();
         stage.setTitle("회원가입");
+        stage.getIcons().add(new Image("file:client/resources/icon/teumin.png"));
         stage.setScene(new Scene(loadFxml("Register")));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show(); // TODO test
@@ -50,6 +52,7 @@ public class Login extends Client {
             stage.close();
 
             stage.setScene(new Scene(loadFxml("MainView")));
+            stage.getIcons().add(new Image("file:client/resources/icon/teumin.png"));
             stage.show();
             //접속한 id 정보 넘기기..
         }
