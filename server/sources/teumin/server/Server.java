@@ -14,8 +14,8 @@ public class Server {
 
     public Server() throws Exception {
         serverSocket = new ServerSocket(8000);
-        //connection = DriverManager.getConnection("jdbc:mysql://124.63.153.55:3306/teumin?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
-        connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/teumin?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
+        connection = DriverManager.getConnection("jdbc:mysql://124.63.153.55:3306/트민?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
+        //connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/teumin?useSSL=false&characterEncoding=utf8", "root", "apmsetup");
     }
 
     private Coclient accept() throws Exception {
