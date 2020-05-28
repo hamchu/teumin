@@ -20,7 +20,7 @@ public class Register extends Client {
     private PasswordField text_password;
 
     @FXML
-    private TextField text_nickname;
+    private TextField text_name;
 
     @FXML
     private Button btn_register;
@@ -34,17 +34,17 @@ public class Register extends Client {
         register(
                 text_id.getText(),
                 text_password.getText(),
-                text_nickname.getText()
+                text_name.getText()
         );
     }
 
-    void register(String id, String password, String nickname) throws Exception {
+    void register(String id, String password, String name) throws Exception {
         Data data = null;
 
         data = new Data(DataType.REGISTER_REQUEST);
         data.add(id);
         data.add(password);
-        data.add(nickname);
+        data.add(name);
         network.write(data);
 
         data = network.read();
