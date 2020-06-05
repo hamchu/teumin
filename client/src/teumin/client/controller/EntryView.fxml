@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="root" alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.EntryController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="회원 유형을 선택해주세요." />
+      <HBox alignment="CENTER" spacing="80.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#click_generalUser" prefHeight="80.0" prefWidth="80.0" text="일반 사용자" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_seller" prefHeight="80.0" prefWidth="80.0" text="영업자" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

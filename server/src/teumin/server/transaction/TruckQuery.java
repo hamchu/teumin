@@ -36,12 +36,12 @@ public class TruckQuery extends Transaction {
             String sql = "select * from truck where proven='1', category=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, category);
-            ResultSet resultSet = pstmt.executeQuery(sql);
+            ResultSet resultSet = pstmt.executeQuery();
             while (resultSet.next()) {
                 String sql2 = "select * from sales_info where truck_name=?";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
                 pstmt2.setString(1, resultSet.getString("name"));
-                ResultSet resultSet2 = pstmt2.executeQuery(sql);
+                ResultSet resultSet2 = pstmt2.executeQuery();
                 boolean isTarget = false;
                 while (resultSet2.next()) {
                     Date date = ((Date)resultSet2.getObject("date"));

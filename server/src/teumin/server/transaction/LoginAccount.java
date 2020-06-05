@@ -43,11 +43,11 @@ public class LoginAccount extends Transaction {
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
-            String sql = "select name, type from account where id=?, password=?";
+            String sql = "select name, type from account where id=? and password=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, password);
-            ResultSet resultSet = pstmt.executeQuery(sql);
+            ResultSet resultSet = pstmt.executeQuery();
             if (resultSet.next()) {
                 success = true;
                 name = resultSet.getString("name");

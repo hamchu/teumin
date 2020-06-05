@@ -1,4 +1,4 @@
-package teumin.client.controllers;
+package teumin.client.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -6,12 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.network.Data;
-import teumin.network.DataType;
 
-public class Register extends Client {
+public class RegisterAccountController extends Client {
+
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private TextField text_id;
@@ -29,56 +32,47 @@ public class Register extends Client {
     private Button btn_cancel;
 
     @FXML
-    void btn_register_onClick(MouseEvent event) throws Exception
-    {
-        register(
-                text_id.getText(),
-                text_password.getText(),
-                text_name.getText()
-        );
+    void btn_cancel_onClick(MouseEvent event) {
+        Stage stage = (Stage)root.getScene().getWindow();
+        stage.close();
     }
 
-    void register(String id, String password, String name) throws Exception {
-        Data data = null;
+    @FXML
+    void btn_register_onClick(MouseEvent event) throws Exception {
+        String id = text_id.getText();
+        String password = text_password.getText();
+        String name = text_name.getText();
 
-        data = new Data(DataType.REGISTER_REQUEST);
+        Data data = new Data();
+        data.add("RegisterAccount");
         data.add(id);
         data.add(password);
         data.add(name);
         network.write(data);
 
         data = network.read();
-        if (data.getDataType() != DataType.REGISTER_RESPOND)
-            throw new Exception("알 수 없는 응답");
+        boolean success = data.<Boolean>get(0);
 
-        if(data.<Boolean>get(0))
-        {
+        if (success) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("알림");
             alert.setHeaderText(null);
             alert.setContentText("회원가입이 완료되었습니다.");
             alert.showAndWait();
 
-            Stage stage = (Stage) btn_register.getScene().getWindow(); //get a handle
+            Stage stage = (Stage)root.getScene().getWindow();
             stage.close();
-        }
-        else
-        {
+        } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("알림");
             alert.setHeaderText(null);
-            alert.setContentText("해당하는 id가 이미 존재합니다.");
+            alert.setContentText("아이디 중복 또는 형식 오류입니다.");
             alert.showAndWait();
 
-            text_id.setText(""); // id 입력란 초기화
+            text_id.setText("");
+            text_password.setText("");
+            text_name.setText("");
         }
-    }
-
-    @FXML
-    void btn_cancel_onClick(MouseEvent event)
-    {
-        Stage stage = (Stage) btn_cancel.getScene().getWindow(); //get a handle
-        stage.close();
     }
 
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.LoginAccountController">
+   <children>
+      <HBox layoutX="92.0" layoutY="60.0" spacing="6.0">
+         <children>
+            <VBox spacing="6.0">
+               <children>
+                  <TextField fx:id="text_id" prefHeight="20.0" prefWidth="150.0" promptText="아이디" />
+                  <PasswordField fx:id="text_password" prefHeight="20.0" prefWidth="150.0" promptText="비밀번호" />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onMouseClicked="#click_login" prefHeight="50.0" prefWidth="60.0" text="로그인" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="176.0" layoutY="140.0" prefHeight="20.0">
+         <children>
+            <Text onMouseClicked="#click_register" strokeType="OUTSIDE" strokeWidth="0.0" text="회원가입" />
+         </children>
+      </VBox>
+   </children>
+</Pane>

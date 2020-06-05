@@ -39,7 +39,7 @@ public class RegisterAccount extends Transaction {
         if (!(
         id.matches("^[a-zA-Z]{1}[a-zA-Z0-9]{3,15}$") &&
         password.matches("^[a-zA-Z0-9]{4,32}$") &&
-        name.matches("^[가-힣]{2,16}]$")
+        name.matches("^[가-힣]{2,16}$")
         )) {
             data = new Data();
             data.add(success);
@@ -54,7 +54,7 @@ public class RegisterAccount extends Transaction {
             String sql = "select * from account where id=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, id);
-            ResultSet resultSet = pstmt.executeQuery(sql);
+            ResultSet resultSet = pstmt.executeQuery();
             if (!resultSet.next()) {
                 success = true;
 
