@@ -28,14 +28,9 @@ public class LoginAccount extends Transaction {
         String name = "";
         int type = -1;
 
-        // 조건 검사 : 로그인 아닌 상태
+        // 조건 검사 : 이미 로그인한 상태면 접속 끊기
         if (account.getId() != null) {
-
-            data = new Data();
-            data.add(success);
-            data.add(name);
-            data.add(type);
-            network.write(data);
+            network.close();
 
             return;
         }

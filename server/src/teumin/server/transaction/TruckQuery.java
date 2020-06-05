@@ -48,7 +48,7 @@ public class TruckQuery extends Transaction {
                     /**
                      *
                      *
-                     * 하던중..............................
+                     * 작업 보류....
                      *
                      *
                      */
