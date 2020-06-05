@@ -2,6 +2,7 @@ package teumin.client.controller;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -15,7 +16,7 @@ public class EntryController extends Client {
     VBox root;
 
     @FXML
-    void click_generalUser(MouseEvent event) {
+    void click_generalUser(MouseEvent event) throws Exception {
         Stage stage = (Stage)root.getScene().getWindow();
         stage.close();
 

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="248.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.RegisterAccountController">
+<AnchorPane fx:id="root" prefHeight="248.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.RegisterAccountController">
    <children>
       <VBox alignment="TOP_RIGHT" fillWidth="false" layoutX="51.0" layoutY="36.0" spacing="25.0">
          <children>

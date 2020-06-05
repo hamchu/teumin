@@ -18,16 +18,16 @@ public class Client extends Application {
         return network;
     }
 
-    protected static Parent loadFxml(String name) {
+    public static Parent loadFxml(String name) {
         try {
-            return FXMLLoader.load(Client.class.getResource("/teumin/client/controller/" + name));
+            return FXMLLoader.load(Client.class.getResource("controller/" + name));
         } catch (Exception ignore) {
         }
 
         return null;
     }
 
-    protected static Image loadImage(String name) {
+    public static Image loadImage(String name) {
         try {
             return new Image("/icon/" + name);
         } catch (Exception ignore) {

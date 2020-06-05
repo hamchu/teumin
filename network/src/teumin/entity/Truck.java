@@ -2,7 +2,9 @@ package teumin.entity;
 
 import javafx.scene.image.Image;
 
-public class Truck {
+import java.io.Serializable;
+
+public class Truck implements Serializable {
     private String name;
     private String introduction;
     private String explanation;
