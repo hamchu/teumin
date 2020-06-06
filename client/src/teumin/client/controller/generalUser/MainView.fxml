@@ -9,7 +9,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.generalUser.MainController">
    <children>
-      <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="일반 사용자  메인" />
       <Pane layoutX="102.0" layoutY="125.0" prefHeight="96.0" prefWidth="397.0" style="-fx-background-color: lightgray;">
          <children>
             <Button layoutX="70.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#click_getAddress" text="검색" />
@@ -23,6 +22,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </Pane>
-      <Button layoutX="225.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#click_queryTrucks" prefHeight="51.0" prefWidth="151.0" text="가까운 푸드트럭 찾기" />
+      <Button layoutX="226.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#click_queryTrucks" prefHeight="51.0" prefWidth="259.0" text="가까운 푸드트럭 찾기" />
+      <Button layoutX="115.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#click_exit" prefHeight="51.0" prefWidth="92.0" text="나가기" />
    </children>
 </AnchorPane>

@@ -1,10 +1,12 @@
 package teumin.client.controller.generalUser;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.client.util.addressQueryWindow.AddressQueryWindow;
 import teumin.client.util.categoryPickWindow.CategoryPickWindow;
@@ -69,6 +71,17 @@ public class MainController extends Client {
          *
          */
 
+
+    }
+
+    @FXML
+    void click_exit(MouseEvent event) {
+
+        Stage stage = (Stage)text_addressName.getScene().getWindow();
+        stage.close();
+
+        stage.setScene(new Scene(loadFxml("EntryView.fxml")));
+        stage.show();
 
     }
 

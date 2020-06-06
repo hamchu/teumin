@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.LoginAccountController">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.LoginAccountController">
    <children>
       <HBox layoutX="92.0" layoutY="60.0" spacing="6.0">
          <children>
@@ -22,10 +21,19 @@
             <Button mnemonicParsing="false" onMouseClicked="#click_login" prefHeight="50.0" prefWidth="60.0" text="로그인" />
          </children>
       </HBox>
-      <VBox alignment="CENTER" layoutX="176.0" layoutY="140.0" prefHeight="20.0">
+      <HBox layoutX="126.0" layoutY="140.0" spacing="50.0">
          <children>
-            <Text onMouseClicked="#click_register" strokeType="OUTSIDE" strokeWidth="0.0" text="회원가입" />
+            <VBox alignment="CENTER" prefHeight="20.0">
+               <children>
+                  <Text fx:id="ㄷ" onMouseClicked="#click_exit" strokeType="OUTSIDE" strokeWidth="0.0" text="나가기" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="20.0">
+               <children>
+                  <Text onMouseClicked="#click_register" strokeType="OUTSIDE" strokeWidth="0.0" text="회원가입" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </Pane>

@@ -82,4 +82,13 @@ public class LoginAccountController extends Client {
         stage.show();
     }
 
+    @FXML
+    void click_exit(MouseEvent event) {
+        Stage stage = (Stage)root.getScene().getWindow();
+        stage.close();
+
+        stage.setScene(new Scene(loadFxml("EntryView.fxml")));
+        stage.show();
+    }
+
 }
