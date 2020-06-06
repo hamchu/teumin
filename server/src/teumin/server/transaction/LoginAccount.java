@@ -31,7 +31,6 @@ public class LoginAccount extends Transaction {
         // 조건 검사 : 이미 로그인한 상태면 접속 끊기
         if (account.getId() != null) {
             network.close();
-
             return;
         }
 
