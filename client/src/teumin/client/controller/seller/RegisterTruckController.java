@@ -1,6 +1,8 @@
 package teumin.client.controller.seller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
@@ -8,10 +10,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teumin.client.Client;
+import teumin.client.util.imagePickWindow.ImagePickWindow;
+import teumin.entity.Category;
 import teumin.entity.Truck;
 import teumin.network.Data;
+
+import java.util.ArrayList;
 
 public class RegisterTruckController extends Client {
     @FXML
@@ -67,7 +77,7 @@ public class RegisterTruckController extends Client {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("알림");
             alert.setHeaderText(null);
-            alert.setContentText("푸드트럭 등록이 완료되었습니다.\n관리자의 승인 후 일반사용자에게 접근됩니다!");
+            alert.setContentText("푸드트럭 등록이 완료되었습니다.\n관리자의 승인 후 일반사용자에게 접근됩니다.");
             alert.showAndWait();
 
             Stage stage = (Stage)text_name.getScene().getWindow();
@@ -83,16 +93,48 @@ public class RegisterTruckController extends Client {
 
     @FXML
     void click_selectCategory(MouseEvent event) {
+        Stage stage = new Stage();
+        stage.setTitle("카테고리 선택");
+        stage.getIcons().add(loadImage("teumin.png"));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
 
+        VBox vBox = new VBox();
+        vBox.setSpacing(20);
+        vBox.setPadding(new Insets(20));
+        ArrayList<String> categories = Category.getCategories();
+        for (int i = 0; i < categories.size(); i++) {
+            HBox hBox = new HBox();
+            hBox.setAlignment(Pos.CENTER_LEFT);
+            hBox.setSpacing(50);
+            Text text = new Text(categories.get(i));
+            hBox.getChildren().addAll(text);
+            hBox.setOnMouseClicked(e -> {
+                text_category.setText(text.getText());
+                ((Stage)vBox.getScene().getWindow()).close();
+            });
+            vBox.getChildren().add(hBox);
+        }
+
+        stage.setScene(new Scene(vBox));
+        stage.show();
     }
 
     @FXML
     void click_selectEvidence(MouseEvent event) {
-
+        try {
+            img_evidence.setImage(new ImagePickWindow().showAndGet());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void click_selectIcon(MouseEvent event) {
-
+        try {
+            img_icon.setImage(new ImagePickWindow().showAndGet());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
