@@ -43,6 +43,13 @@ public class InquiryTruckByNameToManage extends Transaction {
 
             if (resultSet.next()) {
 
+                if (account.getType() == 1) { // 영업자는 본인 소유 외 불가능
+                    if (!resultSet.getString("owner_id").equals(account.getId())) {
+                        network.close();
+                        return;
+                    }
+                }
+
                 String introduction = resultSet.getString("introduction");
                 String explanation = resultSet.getString("explanation");
                 String category = resultSet.getString("category");
