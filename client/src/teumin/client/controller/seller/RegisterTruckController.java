@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.client.util.imagePickWindow.ImagePickWindow;
 import teumin.entity.Category;
+import teumin.entity.Bytes;
 import teumin.entity.Truck;
 import teumin.network.Data;
 
@@ -58,12 +59,9 @@ public class RegisterTruckController extends Client {
                 text_introduction.getText(),
                 text_explanation.getText(),
                 text_category.getText(),
-                img_evidence.getImage(),
-                img_icon.getImage()
+                new Bytes(img_evidence.getImage()),
+                new Bytes(img_icon.getImage())
                 );
-
-        if (truck.getEvidence() == null) truck.setEvidence(new Image("/icon/teumin.png"));
-        if (truck.getIcon() == null) truck.setIcon(new Image("/icon/teumin.png"));
 
         Data data = new Data();
         data.add("RegisterTruck");
@@ -123,7 +121,10 @@ public class RegisterTruckController extends Client {
     @FXML
     void click_selectEvidence(MouseEvent event) {
         try {
-            img_evidence.setImage(new ImagePickWindow().showAndGet());
+            Image image = new ImagePickWindow().showAndGet();
+            if (image != null) {
+                img_evidence.setImage(image);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,7 +133,10 @@ public class RegisterTruckController extends Client {
     @FXML
     void click_selectIcon(MouseEvent event) {
         try {
-            img_icon.setImage(new ImagePickWindow().showAndGet());
+            Image image = new ImagePickWindow().showAndGet();
+            if (image != null) {
+                img_icon.setImage(image);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

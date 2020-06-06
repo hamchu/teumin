@@ -31,8 +31,8 @@ public class Server {
 
     public static void main(String[] args) throws Exception {
         Database.initialize(
-                "jdbc:mysql://127.0.0.1:3306/트민?useSSL=false&characterEncoding=utf8", // 신동헌
-                //"jdbc:mysql://124.63.153.55:3306/트민?useSSL=false&characterEncoding=utf8", // 이희수
+                "jdbc:mysql://127.0.0.1:3306/teumin?useSSL=false&characterEncoding=utf8", // 신동헌
+                //"jdbc:mysql://124.63.153.55:3306/teumin?useSSL=false&characterEncoding=utf8", // 이희수
                 "root",
                 "apmsetup"
         );

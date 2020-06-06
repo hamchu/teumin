@@ -1,5 +1,6 @@
 package teumin.server.transaction;
 
+import teumin.entity.Category;
 import teumin.entity.Truck;
 import teumin.network.Data;
 import teumin.network.Network;
@@ -37,10 +38,18 @@ public class RegisterTruck extends Transaction {
 
         // 조건 검사 : 트럭 멤버들 범위 검사
         if (!(
-                        truck.getName().matches("^[가-힣a-zA-Z ]{2,16}$") &&
-                                truck.getIntroduction().matches("^[가-힣a-zA-Z ]{2,32}$") &&
-                                truck.getExplanation().matches("^[가-힣a-zA-Z ]{2,64}$")
+                        truck.getName().matches("^.{2,16}$") &&
+                                truck.getIntroduction().matches("^.{2,32}$") &&
+                                (truck.getExplanation().length() >= 2 && truck.getExplanation().length() <= 64)
         )) {
+            data = new Data();
+            data.add(success);
+            network.write(data);
+            return;
+        }
+
+        // 조건 검사 : 이미지 파일들 null 체크하기
+        if (truck.getIcon().toImage() == null || truck.getEvidence().toImage() == null) {
             data = new Data();
             data.add(success);
             network.write(data);
@@ -48,8 +57,18 @@ public class RegisterTruck extends Transaction {
             return;
         }
 
-        // 조건 검사 : 카테고리가 지정 카테고리 리스트에 속하지 않으면 끊기 좃 같네
-        // TODO 하하하
+        // 조건 검사 : 카테고리가 지정 카테고리 리스트에 속하지 않으면 끊기
+        boolean flag = false;
+        for (String category : Category.getCategories()) {
+            if (category.equals(truck.getCategory())){
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            network.close();
+            return;
+        }
 
         // DB 연동
         Connection connection = Database.getConnection();
@@ -61,9 +80,9 @@ public class RegisterTruck extends Transaction {
             if (!resultSet.next()) {
                 success = true;
 
-                String sql2 = "insert into" +
-                        "truck(owner_id, name, introduction, explanation, category, evidence, proven, icon)" +
-                        "values(?,?,?,?,?,?,'0','?')";
+                String sql2 = "insert into " +
+                        "truck(owner_id, name, introduction, explanation, category, evidence, proven, icon) " +
+                        "values(?,?,?,?,?,?,'0',?)";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
                 pstmt2.setString(1, account.getId());
                 pstmt2.setString(2, truck.getName());
@@ -75,7 +94,7 @@ public class RegisterTruck extends Transaction {
                 pstmt2.executeUpdate();
             }
         }
-
+        
         data = new Data();
         data.add(success);
         network.write(data);
