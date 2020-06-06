@@ -2,10 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.MainController">
    <children>
-      <Button layoutX="172.0" layoutY="135.0" mnemonicParsing="false" onMouseClicked="#click_registerTruck" text="푸드트럭 등록" />
+      <Button layoutX="75.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#click_registerTruck" text="푸드트럭 등록" />
+      <Button layoutX="75.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#click_inquiryRecruit" text="허가구역 모집 공고 확인" />
+      <Button layoutX="75.0" layoutY="130.0" mnemonicParsing="false" onMouseClicked="#click_manageTruck" text="푸드트럭 관리" />
+      <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="영업자 메인" />
    </children>
 </AnchorPane>

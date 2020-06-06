@@ -9,4 +9,14 @@ public class MainController extends Client {
     void click_registerTruck(MouseEvent event) {
 
     }
+
+    @FXML
+    void click_inquiryRecruit(MouseEvent event) {
+
+    }
+
+    @FXML
+    void click_manageTruck(MouseEvent event) {
+
+    }
 }
