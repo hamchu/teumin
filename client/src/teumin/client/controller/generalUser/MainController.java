@@ -10,10 +10,12 @@ import teumin.entity.Truck;
 import teumin.network.Data;
 
 public class MainController extends Client {
+
     @FXML
     void click_testAddressQueryWindow(MouseEvent event) throws Exception {
         Address address = null;
 
         address = new AddressQueryWindow().showAndGet();
     }
+
 }

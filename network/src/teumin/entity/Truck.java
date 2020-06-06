@@ -2,6 +2,7 @@ package teumin.entity;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -77,14 +78,13 @@ public class Truck implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        String url = (String) s.readObject();
         evidence = SwingFXUtils.toFXImage(ImageIO.read(s), null);
         icon = SwingFXUtils.toFXImage(ImageIO.read(s), null);
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        ImageIO.write(SwingFXUtils.fromFXImage(evidence, null), "png", s);
         ImageIO.write(SwingFXUtils.fromFXImage(icon, null), "png", s);
+        ImageIO.write(SwingFXUtils.fromFXImage(evidence, null), "png", s);
     }
 }
