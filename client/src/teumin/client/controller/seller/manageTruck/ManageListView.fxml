@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -25,8 +26,14 @@
             <Text fx:id="text_introduction" layoutX="79.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[한 줄 설명]" />
          </children>
       </Pane>
-      <Button layoutX="388.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#click_manageItem" prefHeight="152.0" prefWidth="173.0" text="상품 관리" />
-      <Button layoutX="162.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#click_manageTruck" prefHeight="152.0" prefWidth="173.0" text="푸드트럭 관리" />
+      <VBox layoutX="83.0" layoutY="165.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#click_manageTruckInfo" prefHeight="50.0" prefWidth="435.0" text="푸드트럭 정보 관리" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_manageItem" prefHeight="50.0" prefWidth="435.0" text="상품 관리" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_manageSalesInfo" prefHeight="50.0" prefWidth="435.0" text="영업 일정 관리" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_exit" prefHeight="22.0" prefWidth="435.0" text="나가기" />
+         </children>
+      </VBox>
       <Pane layoutX="15.0" layoutY="98.0" prefHeight="33.0" prefWidth="571.0" style="-fx-background-color: #eeeeee;">
          <children>
             <Pane layoutX="14.0" layoutY="15.0" style="-fx-background-color: gray;" />
@@ -38,6 +45,5 @@
             </HBox>
          </children>
       </Pane>
-      <Button layoutX="32.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#click_exit" prefHeight="152.0" prefWidth="87.0" text="나가기" />
    </children>
 </AnchorPane>

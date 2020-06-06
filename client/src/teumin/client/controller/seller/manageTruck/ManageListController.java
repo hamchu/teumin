@@ -46,7 +46,7 @@ public class ManageListController extends Client {
                 break;
 
             case 0:
-                text_proven.setFill(Paint.valueOf("#0000EE"));
+                text_proven.setFill(Paint.valueOf("#000000"));
                 text_proven.setText("심사 중");
                 btn_requestReVerify.setDisable(true);
                 break;
@@ -74,7 +74,12 @@ public class ManageListController extends Client {
     }
 
     @FXML
-    void click_manageTruck(MouseEvent event) {
+    void click_manageTruckInfo(MouseEvent event) {
+
+    }
+
+    @FXML
+    void click_manageSalesInfo(MouseEvent event) {
 
     }
 
@@ -94,15 +99,20 @@ public class ManageListController extends Client {
             alert.setContentText("재심사 요청이 완료되었습니다.");
             alert.showAndWait();
 
-            text_proven.setFill(Paint.valueOf("#0000EE"));
+            text_proven.setFill(Paint.valueOf("#000000"));
             text_proven.setText("심사 중");
             btn_requestReVerify.setDisable(true);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("알림");
             alert.setHeaderText(null);
-            alert.setContentText("알 수 없는 오류입니다.");
+            alert.setContentText("해당 푸드트럭이 더 이상 존재하지 않습니다.");
             alert.showAndWait();
+
+            Stage stage = (Stage)text_name.getScene().getWindow();
+            stage.close();
+            stage.setScene(new Scene(loadFxml("seller/manageTruck/ManageTruckView.fxml")));
+            stage.show();
         }
     }
 
