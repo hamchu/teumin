@@ -30,7 +30,14 @@ public class QueryAddress extends Transaction {
         // return
         ArrayList<Address> addresses = new ArrayList<>();
 
-        // 조건 검사 : 없음
+        // 조건 검사 : query가 null이면 껍데기만 전송
+        if (query == null || query == "") {
+            data = new Data();
+            data.add(addresses);
+            network.write(data);
+
+            return;
+        }
 
         // 레스터 연동
         String json = "";

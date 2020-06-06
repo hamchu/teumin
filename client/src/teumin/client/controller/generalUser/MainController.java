@@ -1,6 +1,7 @@
 package teumin.client.controller.generalUser;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +47,28 @@ public class MainController extends Client {
 
     @FXML
     void click_queryTrucks(MouseEvent event) {
+
+        if (address == null || category == null) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("알림");
+            alert.setHeaderText(null);
+            alert.setContentText("주소와 카테고리를 선택해주세요.");
+            alert.showAndWait();
+
+            return;
+
+        }
+
+        /**
+         *
+         *
+         *
+         *
+         *
+         *
+         */
+
 
     }
 

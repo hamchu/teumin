@@ -38,7 +38,9 @@ public class RegisterTruck extends Transaction {
 
         // 조건 검사 : 트럭 멤버들 범위 검사
         if (!(
-                        truck.getName().matches("^.{2,16}$") &&
+
+                truck.getName().replaceAll(" ", "").replaceAll("\t", "") != "" &&
+                truck.getName().matches("^.{2,16}$") &&
                                 truck.getIntroduction().matches("^.{2,32}$") &&
                                 (truck.getExplanation().length() >= 2 && truck.getExplanation().length() <= 64) &&
                                 truck.getCategory() != null
