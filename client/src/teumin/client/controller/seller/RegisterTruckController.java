@@ -59,6 +59,7 @@ public class RegisterTruckController extends Client {
                 text_introduction.getText(),
                 text_explanation.getText(),
                 text_category.getText(),
+                0,
                 new Bytes(img_evidence.getImage()),
                 new Bytes(img_icon.getImage())
                 );
@@ -92,7 +93,7 @@ public class RegisterTruckController extends Client {
     @FXML
     void click_selectCategory(MouseEvent event) {
         Stage stage = new Stage();
-        stage.setTitle("카테고리 선택");
+        stage.setTitle("카테고리");
         stage.getIcons().add(loadImage("teumin.png"));
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);

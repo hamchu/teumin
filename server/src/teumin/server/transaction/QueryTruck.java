@@ -14,8 +14,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class TruckQuery extends Transaction {
-    public TruckQuery(Network network, Account account) {
+public class QueryTruck extends Transaction {
+    public QueryTruck(Network network, Account account) {
         super(network, account);
     }
 

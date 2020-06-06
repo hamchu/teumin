@@ -24,11 +24,19 @@ public class MainController extends Client {
     @FXML
     void click_inquiryRecruit(MouseEvent event) {
         Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
+
+        stage.setScene(new Scene(loadFxml("seller/InquiryRecruitView.fxml")));
+        stage.show();
     }
 
     @FXML
     void click_manageTruck(MouseEvent event) {
         Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
+
+        stage.setScene(new Scene(loadFxml("seller/ManageTruckView.fxml")));
+        stage.show();
     }
 
 }

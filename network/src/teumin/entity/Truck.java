@@ -8,14 +8,16 @@ public class Truck implements Serializable {
     private String introduction;
     private String explanation;
     private String category;
+    private int proven;
     private Bytes evidence;
     private Bytes icon;
 
-    public Truck(String name, String introduction, String explanation, String category, Bytes evidence, Bytes icon) {
+    public Truck(String name, String introduction, String explanation, String category, int proven, Bytes evidence, Bytes icon) {
         this.name = name;
         this.introduction = introduction;
         this.explanation = explanation;
         this.category = category;
+        this.proven = proven;
         this.evidence = evidence;
         this.icon = icon;
     }
@@ -44,6 +46,10 @@ public class Truck implements Serializable {
         return icon;
     }
 
+    public int getProven() {
+        return proven;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -66,5 +72,9 @@ public class Truck implements Serializable {
 
     public void setIcon(Bytes icon) {
         this.icon = icon;
+    }
+
+    public void setProven(int proven) {
+        this.proven = proven;
     }
 }

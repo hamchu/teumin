@@ -17,8 +17,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class AddressQuery extends Transaction {
-    public AddressQuery(Network network, Account account) {
+public class QueryAddress extends Transaction {
+    public QueryAddress(Network network, Account account) {
         super(network, account);
     }
 
