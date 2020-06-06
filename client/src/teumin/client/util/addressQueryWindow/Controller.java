@@ -35,7 +35,7 @@ public class Controller {
     void click_query(MouseEvent event) throws Exception {
         Network network = Client.getNetwork();
         Data data = new Data();
-        data.add("AddressQuery");
+        data.add("QueryAddress");
         data.add(text_query.getText());
         network.write(data);
 
