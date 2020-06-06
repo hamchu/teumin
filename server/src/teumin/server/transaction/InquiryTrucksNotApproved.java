@@ -5,7 +5,6 @@ import teumin.network.Data;
 import teumin.network.Network;
 import teumin.server.Transaction;
 import teumin.server.account.Account;
-import teumin.server.account.Accounts;
 import teumin.server.database.Database;
 
 import java.sql.Connection;
@@ -13,8 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class InquiryOwnedTrucks extends Transaction {
-    public InquiryOwnedTrucks(Network network, Account account) {
+public class InquiryTrucksNotApproved extends Transaction {
+    public InquiryTrucksNotApproved(Network network, Account account) {
         super(network, account);
     }
 
@@ -25,19 +24,17 @@ public class InquiryOwnedTrucks extends Transaction {
         // return
         ArrayList<Truck> trucks = new ArrayList<>();
 
-        // 조건 검사 : 영업자가 아니면 끊기
-        if (account.getType() != 1) {
+        // 조건 검사 : 관리자가 아니면 불가능
+        if (account.getType() != 0) {
             network.close();
-
             return;
         }
 
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
-            String sql = "select name from truck where owner_id=?";
+            String sql = "select name from truck where proven=0";
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, account.getId());
             ResultSet resultSet = pstmt.executeQuery();
             while (resultSet.next()) {
 

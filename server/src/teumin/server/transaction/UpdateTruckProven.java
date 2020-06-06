@@ -5,51 +5,52 @@ import teumin.network.Data;
 import teumin.network.Network;
 import teumin.server.Transaction;
 import teumin.server.account.Account;
-import teumin.server.account.Accounts;
 import teumin.server.database.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
-public class InquiryOwnedTrucks extends Transaction {
-    public InquiryOwnedTrucks(Network network, Account account) {
+public class UpdateTruckProven extends Transaction {
+    public UpdateTruckProven(Network network, Account account) {
         super(network, account);
     }
 
     @Override
     public void execute(Data data) throws Exception {
-        // param : 없음
+        // param
+        String name = data.get(1);
+        int proven = data.get(2);
 
         // return
-        ArrayList<Truck> trucks = new ArrayList<>();
+        boolean success = false;
 
-        // 조건 검사 : 영업자가 아니면 끊기
-        if (account.getType() != 1) {
+        // 조건 검사 : 관리자 외 불가능
+        if (account.getType() != 0) {
             network.close();
-
             return;
         }
 
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
-            String sql = "select name from truck where owner_id=?";
+            String sql = "select * from truck where name=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, account.getId());
+            pstmt.setString(1, name);
             ResultSet resultSet = pstmt.executeQuery();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
 
-                String name = resultSet.getString("name");
-
-                trucks.add(new Truck(name, null, null, null, 0, null, null));
+                String sql2 = "update truck set proven=? where name=?";
+                PreparedStatement pstmt2 = connection.prepareStatement(sql2);
+                pstmt2.setString(1, name);
+                pstmt2.setInt(2, proven);
+                pstmt2.executeUpdate();
 
             }
         }
 
         data = new Data();
-        data.add(trucks);
+        data.add(success);
         network.write(data);
     }
 }
