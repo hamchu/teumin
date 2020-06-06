@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.entity.Truck;
@@ -51,7 +52,7 @@ public class ManageTruckController extends Client {
     }
 
     @FXML
-    void click_manage(MouseEvent event) {
+    void click_manage(MouseEvent event) throws Exception {
         if (targetTruckName == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("알림");
@@ -62,13 +63,16 @@ public class ManageTruckController extends Client {
             return;
         }
 
-        /**
-         *
-         *
-         * 작업 중..........
-         *
-         *
-         */
+        Data data = new Data();
+        data.add("InquiryTruckByNameToManage");
+        data.add(targetTruckName);
+        network.write(data);
+
+        Stage stage = (Stage)vBox.getScene().getWindow();
+        stage.close();
+
+        stage.setScene(new Scene(loadFxml("/seller/manageTruck/ManageListView.fxml")));
+        stage.show();
     }
 
     @FXML

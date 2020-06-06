@@ -15,7 +15,7 @@
             <Text layoutX="38.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="주소" />
             <TextField fx:id="text_addressName" editable="false" layoutX="118.0" layoutY="20.0" prefHeight="22.0" prefWidth="250.0" />
             <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="카테고리" />
-            <TextField fx:id="text_category" editable="false" layoutX="118.0" layoutY="52.0" prefHeight="22.0" prefWidth="58.0" />
+            <TextField fx:id="text_category" editable="false" layoutX="118.0" layoutY="52.0" prefHeight="22.0" prefWidth="128.0" />
             <Button layoutX="70.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#click_getCategory" text="선택" />
          </children>
          <padding>
