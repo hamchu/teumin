@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="880.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.RegisterTruckController">
+<Pane prefHeight="880.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.registerTruck.RegisterTruckController">
    <children>
       <TextField fx:id="text_name" layoutX="98.0" layoutY="29.0" prefHeight="22.0" prefWidth="346.0" />
       <TextField fx:id="text_introduction" layoutX="98.0" layoutY="65.0" prefHeight="22.0" prefWidth="346.0" />

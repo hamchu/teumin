@@ -1,4 +1,4 @@
-package teumin.client.controller.seller;
+package teumin.client.controller.seller.registerTruck;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -81,6 +81,9 @@ public class RegisterTruckController extends Client {
 
             Stage stage = (Stage)text_name.getScene().getWindow();
             stage.close();
+
+            stage.setScene(new Scene(loadFxml("seller/MainView.fxml")));
+            stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("알림");

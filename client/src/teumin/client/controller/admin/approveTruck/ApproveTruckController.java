@@ -1,8 +1,9 @@
-package teumin.client.controller.seller;
+package teumin.client.controller.admin.approveTruck;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -15,7 +16,8 @@ import teumin.network.Data;
 
 import java.util.ArrayList;
 
-public class ManageTruckController extends Client {
+public class ApproveTruckController extends Client {
+
     @FXML
     private VBox vBox;
 
@@ -25,8 +27,9 @@ public class ManageTruckController extends Client {
 
     @FXML
     void initialize() throws Exception {
+
         Data data = new Data();
-        data.add("InquiryOwnedTrucks");
+        data.add("InquiryTrucksNotApproved");
         network.write(data);
         data = network.read();
         ArrayList<Truck> trucks = data.get(0);
@@ -68,6 +71,15 @@ public class ManageTruckController extends Client {
          *
          *
          */
+    }
+
+    @FXML
+    void click_back(MouseEvent event) {
+        Stage stage = (Stage) vBox.getScene().getWindow();
+        stage.close();
+
+        stage.setScene(new Scene(loadFxml("admin/MainView.fxml")));
+        stage.show();
     }
 
 }

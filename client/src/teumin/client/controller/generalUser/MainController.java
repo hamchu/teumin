@@ -13,9 +13,7 @@ public class MainController extends Client {
 
     @FXML
     void click_testAddressQueryWindow(MouseEvent event) throws Exception {
-        Address address = null;
-
-        address = new AddressQueryWindow().showAndGet();
+        Address address = new AddressQueryWindow().showAndGet();
     }
 
 }

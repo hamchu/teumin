@@ -17,7 +17,7 @@ public class MainController extends Client {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("seller/RegisterTruckView.fxml")));
+        stage.setScene(new Scene(loadFxml("seller/registerTruck/RegisterTruckView.fxml")));
         stage.show();
     }
 
@@ -26,7 +26,7 @@ public class MainController extends Client {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("seller/InquiryRecruitView.fxml")));
+        stage.setScene(new Scene(loadFxml("seller/inquiryRecruit/InquiryRecruitView.fxml")));
         stage.show();
     }
 
@@ -35,7 +35,7 @@ public class MainController extends Client {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("seller/ManageTruckView.fxml")));
+        stage.setScene(new Scene(loadFxml("seller/manageTruck/ManageTruckView.fxml")));
         stage.show();
     }
 
