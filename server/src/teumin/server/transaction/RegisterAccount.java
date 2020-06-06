@@ -53,7 +53,6 @@ public class RegisterAccount extends Transaction {
             pstmt.setString(1, id);
             ResultSet resultSet = pstmt.executeQuery();
             if (!resultSet.next()) {
-                success = true;
 
                 String sql2 = "insert into account(id, password, name, type) values(?,?,?,'1')";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
@@ -61,6 +60,9 @@ public class RegisterAccount extends Transaction {
                 pstmt2.setString(2, password);
                 pstmt2.setString(3, name);
                 pstmt2.executeUpdate();
+
+                success = true;
+
             }
         }
 

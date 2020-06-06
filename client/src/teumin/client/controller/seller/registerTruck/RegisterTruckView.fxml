@@ -25,13 +25,13 @@
       <Button layoutX="304.0" layoutY="427.0" mnemonicParsing="false" onMouseClicked="#click_selectCategory" text="선택" />
       <Pane layoutX="114.0" layoutY="493.0" style="-fx-background-color: gray;">
          <children>
-            <ImageView fx:id="img_icon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="img_icon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" smooth="false" />
          </children>
       </Pane>
       <TextField fx:id="text_category" disable="true" layoutX="98.0" layoutY="427.0" prefHeight="22.0" prefWidth="190.0" />
       <Pane layoutX="114.0" layoutY="584.0" style="-fx-background-color: gray;">
          <children>
-            <ImageView fx:id="img_evidence" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="img_evidence" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" smooth="false" />
          </children>
       </Pane>
    </children>

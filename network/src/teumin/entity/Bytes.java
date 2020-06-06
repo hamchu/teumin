@@ -13,6 +13,10 @@ import java.io.Serializable;
 public class Bytes implements Serializable {
     private byte[] bytes;
 
+    public Bytes(byte[] bytes) {
+        this.bytes = bytes;
+    }
+
     public Bytes(Image image) {
         if (image == null) {
             bytes = null;
@@ -32,6 +36,10 @@ public class Bytes implements Serializable {
             e.printStackTrace();
         }
 
+    }
+
+    public byte[] getBytes() {
+        return bytes;
     }
 
     public Image toImage() {

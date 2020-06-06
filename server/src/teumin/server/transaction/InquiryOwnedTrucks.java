@@ -28,7 +28,6 @@ public class InquiryOwnedTrucks extends Transaction {
         // 조건 검사 : 영업자가 아니면 끊기
         if (account.getType() != 1) {
             network.close();
-
             return;
         }
 

@@ -79,7 +79,6 @@ public class RegisterTruck extends Transaction {
             pstmt.setString(1, truck.getName());
             ResultSet resultSet = pstmt.executeQuery();
             if (!resultSet.next()) {
-                success = true;
 
                 String sql2 = "insert into " +
                         "truck(owner_id, name, introduction, explanation, category, evidence, proven, icon) " +
@@ -90,9 +89,11 @@ public class RegisterTruck extends Transaction {
                 pstmt2.setString(3, truck.getIntroduction());
                 pstmt2.setString(4, truck.getExplanation());
                 pstmt2.setString(5, truck.getCategory());
-                pstmt2.setObject(6, truck.getEvidence());
-                pstmt2.setObject(7, truck.getIcon());
+                pstmt2.setObject(6, truck.getEvidence().getBytes());
+                pstmt2.setObject(7, truck.getIcon().getBytes());
                 pstmt2.executeUpdate();
+
+                success = true;
             }
         }
         

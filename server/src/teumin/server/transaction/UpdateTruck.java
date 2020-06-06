@@ -58,6 +58,8 @@ public class UpdateTruck extends Transaction {
                  *
                  */
 
+                success = true;
+
             }
         }
 

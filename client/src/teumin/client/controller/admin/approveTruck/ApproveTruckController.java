@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.entity.Truck;
@@ -27,6 +28,10 @@ public class ApproveTruckController extends Client {
 
     @FXML
     void initialize() throws Exception {
+
+        targetTruckName = null;
+        hBoxes.clear();
+        vBox.getChildren().clear();
 
         Data data = new Data();
         data.add("InquiryTrucksNotApproved");
@@ -53,7 +58,7 @@ public class ApproveTruckController extends Client {
     }
 
     @FXML
-    void click_manage(MouseEvent event) {
+    void click_manage(MouseEvent event) throws Exception {
         if (targetTruckName == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("알림");
@@ -64,13 +69,20 @@ public class ApproveTruckController extends Client {
             return;
         }
 
-        /**
-         *
-         *
-         * 작업 중..........
-         *
-         *
-         */
+        Data data = new Data();
+        data.add("InquiryTruckByNameToManage");
+        data.add(targetTruckName);
+        network.write(data);
+
+        Stage stage = new Stage();
+        stage.setTitle("푸드트럭 등록 승인");
+        stage.getIcons().add(loadImage("teumin.png"));
+        stage.setScene(new Scene(loadFxml("admin/approveTruck/VerifyTruckView.fxml")));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+        initialize();
     }
 
     @FXML

@@ -21,7 +21,7 @@ public class InquiryTruckByNameToManage extends Transaction {
     @Override
     public void execute(Data data) throws Exception {
         // param
-        String name = data.<String>get(0);
+        String name = data.get(1);
 
         // return
         Truck truck = null;
@@ -54,8 +54,8 @@ public class InquiryTruckByNameToManage extends Transaction {
                 String explanation = resultSet.getString("explanation");
                 String category = resultSet.getString("category");
                 int proven = resultSet.getInt("proven");
-                Bytes evidence = (Bytes) resultSet.getObject("evidence");
-                Bytes icon = (Bytes)resultSet.getObject("icon");
+                Bytes evidence = new Bytes(resultSet.getObject("evidence", byte[].class));
+                Bytes icon = new Bytes(resultSet.getObject("icon", byte[].class));
 
                 truck = new Truck(name, introduction, explanation, category, proven, evidence, icon);
 

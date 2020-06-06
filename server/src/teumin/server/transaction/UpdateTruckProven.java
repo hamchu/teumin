@@ -42,9 +42,11 @@ public class UpdateTruckProven extends Transaction {
 
                 String sql2 = "update truck set proven=? where name=?";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
-                pstmt2.setString(1, name);
-                pstmt2.setInt(2, proven);
+                pstmt2.setInt(1, proven);
+                pstmt2.setString(2, name);
                 pstmt2.executeUpdate();
+
+                success = true;
 
             }
         }

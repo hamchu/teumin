@@ -10,7 +10,7 @@
       <Button layoutX="110.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#click_find" text="이미지 찾기" />
       <Pane layoutX="75.0" layoutY="65.0" style="-fx-background-color: gray;">
          <children>
-            <ImageView fx:id="img" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="img" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" smooth="false" />
          </children>
       </Pane>
       <Button layoutX="130.0" layoutY="233.0" mnemonicParsing="false" onMouseClicked="#click_ok" text="완료" />
