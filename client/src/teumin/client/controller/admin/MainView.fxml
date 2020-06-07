@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.admin.MainController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.admin.MainController">
    <children>
       <Button layoutX="206.0" layoutY="206.0" mnemonicParsing="false" onMouseClicked="#click_approveTruck" text="푸드트럭 등록 승인" />
-      <Button layoutX="206.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#click_registerRecruit" text="허가구역 모집 공고 등록" />
+      <Button layoutX="206.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#click_registerRecruit" text="허가구역 모집 공고 관리" />
       <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="관리자 메인" />
       <Button layoutX="206.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#click_logout" text="로그아웃" />
    </children>

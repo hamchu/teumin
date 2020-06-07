@@ -29,7 +29,7 @@ public class MainController extends Client {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("admin/registerRecruit/RegisterRecruitView.fxml")));
+        stage.setScene(new Scene(loadFxml("admin/recruitManagement/RecruitMainView.fxml")));
         stage.show();
     }
 

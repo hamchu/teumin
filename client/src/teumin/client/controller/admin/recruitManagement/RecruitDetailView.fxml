@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="530.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.admin.recruitManagement.RecruitDetailController">
+    <children>
+        <HBox alignment="CENTER" layoutX="45.0" layoutY="105.0" spacing="10.0">
+            <children>
+                <Text layoutX="46.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="공고 기간 :" />
+            <Label fx:id="recruit_begin" />
+                <Text layoutX="259.0" layoutY="148.2529296875" strokeType="OUTSIDE" strokeWidth="0.0" text="~" />
+            <Label fx:id="recruit_end" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="45.0" layoutY="155.0" spacing="10.0">
+            <children>
+                <Text layoutX="46.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="영업 기간 :" />
+            <Label fx:id="sales_begin" />
+                <Text layoutX="306.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~" />
+            <Label fx:id="sales_end" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="21.0" layoutY="52.0" spacing="10.0">
+            <children>
+                <Text layoutX="39.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="모집공고 이름 :" />
+            <Label fx:id="name" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="53.0" layoutY="209.0" spacing="10.0">
+            <children>
+                <Text layoutX="46.0" layoutY="255.2529296875" strokeType="OUTSIDE" strokeWidth="0.0" text="영업장소 :" />
+            <Label fx:id="address" />
+            </children>
+        </HBox>
+        <HBox layoutX="83.0" layoutY="260.0" spacing="10.0">
+            <children>
+                <Text layoutX="49.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내용 :" />
+                <TextArea fx:id="explanation" editable="false" layoutX="89.0" layoutY="280.0" prefHeight="125.0" prefWidth="425.0" wrapText="true" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="56.0" layoutY="406.0" spacing="10.0">
+            <children>
+                <Text layoutX="50.0" layoutY="454.2529296875" strokeType="OUTSIDE" strokeWidth="0.0" text="참고 url :" />
+            <Label fx:id="reference_url" />
+            <Button mnemonicParsing="false" onMouseClicked="#connect_URL" text="접속" />
+            </children>
+        </HBox>
+        <Button layoutX="365.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#click_update" text="수정" />
+        <Button layoutX="498.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#click_cancel" text="닫기" />
+      <Button layoutX="424.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#click_delete" text="삭제" />
+    </children>
+</AnchorPane>
