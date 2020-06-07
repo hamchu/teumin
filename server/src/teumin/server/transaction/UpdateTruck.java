@@ -1,5 +1,6 @@
 package teumin.server.transaction;
 
+import teumin.entity.Category;
 import teumin.entity.Truck;
 import teumin.network.Data;
 import teumin.network.Network;
@@ -31,6 +32,43 @@ public class UpdateTruck extends Transaction {
             return;
         }
 
+        // 조건 검사 : 트럭 멤버들 범위 검사
+        if (!(
+
+                !truck.getName().replaceAll(" ", "").replaceAll("\t", "").equals("") &&
+                        truck.getName().matches("^.{2,16}$") &&
+                        truck.getIntroduction().matches("^.{2,32}$") &&
+                        (truck.getExplanation().length() >= 2 && truck.getExplanation().length() <= 64) &&
+                        truck.getCategory() != null
+        )) {
+            data = new Data();
+            data.add(success);
+            network.write(data);
+            return;
+        }
+
+        // 조건 검사 : 아이콘 null 체크하기
+        if (truck.getIcon().toImage() == null) {
+            data = new Data();
+            data.add(success);
+            network.write(data);
+
+            return;
+        }
+
+        // 조건 검사 : 카테고리가 지정 카테고리 리스트에 속하지 않으면 끊기
+        boolean flag = false;
+        for (String category : Category.getCategories()) {
+            if (category.equals(truck.getCategory())){
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            network.close();
+            return;
+        }
+
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
@@ -50,13 +88,11 @@ public class UpdateTruck extends Transaction {
 
                 String sql2 = "update truck set introduction=?, explanation=?, category=?, icon=?";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
-
-                /**
-                 *
-                 *
-                 *
-                 *
-                 */
+                pstmt2.setString(1, truck.getIntroduction());
+                pstmt2.setString(2, truck.getExplanation());
+                pstmt2.setString(3, truck.getCategory());
+                pstmt2.setObject(4, truck.getIcon().getBytes());
+                pstmt2.executeUpdate();
 
                 success = true;
 

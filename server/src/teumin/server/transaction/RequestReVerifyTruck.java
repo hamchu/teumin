@@ -1,5 +1,6 @@
 package teumin.server.transaction;
 
+import teumin.entity.Bytes;
 import teumin.network.Data;
 import teumin.network.Network;
 import teumin.server.Transaction;
@@ -19,6 +20,7 @@ public class RequestReVerifyTruck extends Transaction {
     public void execute(Data data) throws Exception {
         // param
         String name = data.get(1);
+        Bytes evidence = data.get(2);
 
         // return
         boolean success = false;
@@ -54,10 +56,11 @@ public class RequestReVerifyTruck extends Transaction {
                     return;
                 }
 
-                String sql2 = "update truck set proven=? where name=?";
+                String sql2 = "update truck set proven=?, evidence=? where name=?";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
                 pstmt2.setInt(1, 0);
-                pstmt2.setString(2, name);
+                pstmt2.setObject(2, evidence.getBytes());
+                pstmt2.setString(3, name);
                 pstmt2.executeUpdate();
 
                 success = true;

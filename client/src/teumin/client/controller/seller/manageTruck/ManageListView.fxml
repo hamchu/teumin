@@ -20,7 +20,7 @@
             </Text>
             <Pane layoutX="14.0" layoutY="15.0" style="-fx-background-color: gray;">
                <children>
-                  <ImageView fx:id="img_icon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img_icon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" smooth="false" />
                </children>
             </Pane>
             <Text fx:id="text_introduction" layoutX="79.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[한 줄 설명]" />

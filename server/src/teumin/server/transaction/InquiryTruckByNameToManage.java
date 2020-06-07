@@ -58,7 +58,6 @@ public class InquiryTruckByNameToManage extends Transaction {
                 Bytes icon = new Bytes(resultSet.getObject("icon", byte[].class));
 
                 truck = new Truck(name, introduction, explanation, category, proven, evidence, icon);
-
             }
         }
 
