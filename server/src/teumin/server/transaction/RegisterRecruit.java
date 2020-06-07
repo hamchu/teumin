@@ -29,8 +29,8 @@ public class RegisterRecruit extends Transaction {
 
         //조건 검사 : 각 타입별 형식 및 이름은 2~16자, 주소는 2~64자, 설명은 2~64자, url은 3~160자, 날짜 순서 올바른지 여부
         if (!(
-                recruit.getName().replaceAll(" ", "").replaceAll("\t", "") != "" &&
-                        recruit.getName().matches("^[a-zA-Z가-힣0-9\\s]{2,16}$$") &&
+                !recruit.getName().replaceAll(" ", "").replaceAll("\t", "").equals("") &&
+                        recruit.getName().matches("^[a-zA-Z가-힣0-9\\s]{2,16}$") &&
                         recruit.getAddress().matches("^[a-zA-Z가-힣0-9\\s]{2,64}$") &&
                         recruit.getExplanation().matches("^.{2,64}$") &&
                         recruit.getReference_url().matches("^.{3,160}$") &&

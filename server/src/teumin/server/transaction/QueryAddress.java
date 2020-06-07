@@ -31,7 +31,7 @@ public class QueryAddress extends Transaction {
         ArrayList<Address> addresses = new ArrayList<>();
 
         // 조건 검사 : query가 null이면 껍데기만 전송
-        if (query == null || query == "") {
+        if (query == null || query.replaceAll(" ", "").replaceAll("\t", "").equals("")) {
             data = new Data();
             data.add(addresses);
             network.write(data);
