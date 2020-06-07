@@ -18,16 +18,19 @@ public class InquiryAllRecruit extends Transaction {
     @Override
     public void execute(Data data) throws Exception {
 
-        // 조건 검사 : 관리자 권한 아닐 시 접속 끊기
+        // 조건 검사 : 관리자, 영업자 권한 아닐 시 접속 끊기
         if (account.getType() != 0) {
-            network.close();
-            return;
+            if (account.getType() != 1)
+            {
+                network.close();
+                return;
+            }
         }
 
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
-            String sql = "select * from recruit";
+            String sql = "select * from recruit order by number desc";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ResultSet resultSet = pstmt.executeQuery();
 

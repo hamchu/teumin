@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="teumin.client.controller.seller.inquiryRecruit.InquiryRecruitController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="550.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.inquiryRecruit.InquiryRecruitController">
+    <children>
+        <Button layoutX="25.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#goBack" text="뒤로" />
+        <TableView fx:id="recruit_list" layoutX="43.0" layoutY="66.0" onMouseClicked="#showDetail" prefHeight="431.0" prefWidth="544.0">
+            <columns>
+                <TableColumn fx:id="column_no" prefWidth="46.0" text="No" />
+                <TableColumn fx:id="column_name" prefWidth="306.0" text="모집공고 이름" />
+                <TableColumn prefWidth="181.0" text="공고기간">
+                    <columns>
+                        <TableColumn fx:id="column_recruit_begin" prefWidth="97.0" text="시작일" />
+                        <TableColumn fx:id="column_recruit_end" prefWidth="94.0" text="종료일" />
+                    </columns></TableColumn>
+            </columns>
+        </TableView>
+    </children>
 </AnchorPane>
