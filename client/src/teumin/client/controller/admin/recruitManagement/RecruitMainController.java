@@ -74,6 +74,7 @@ public class RecruitMainController extends Client {
     @FXML
     public void showDetail(MouseEvent event) throws Exception {
         if (event.getClickCount() > 1) {
+            if (recruit_list.getSelectionModel().isEmpty()) { return; }
             Data data = new Data();
             data.add("InquiryRecruit");
             data.add(recruit_list.getSelectionModel().getSelectedItem().getNumber());
