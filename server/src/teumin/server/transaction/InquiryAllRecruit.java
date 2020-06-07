@@ -52,9 +52,9 @@ public class InquiryAllRecruit extends Transaction {
                 data.add(recruit);
                 network.write(data);
             }
-
+            LocalDate now_date = LocalDate.now();
             data = new Data();
-            data.add(null);
+            data.add(now_date);
             network.write(data);
         }
     }
