@@ -49,7 +49,7 @@ public class RegisterTruckController extends Client {
         Stage stage = (Stage) text_name.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("seller/MainView.fxml")));
+        stage.setScene(new Scene(loadFxml("seller/ManageItemsView.fxml")));
         stage.show();
     }
 
@@ -83,7 +83,7 @@ public class RegisterTruckController extends Client {
             Stage stage = (Stage)text_name.getScene().getWindow();
             stage.close();
 
-            stage.setScene(new Scene(loadFxml("seller/MainView.fxml")));
+            stage.setScene(new Scene(loadFxml("seller/ManageItemsView.fxml")));
             stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

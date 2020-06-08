@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.manageTruck.manageItem.ManageItemsController">
+   <children>
+      <Text layoutX="260.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="상품 목록" />
+      <ScrollPane layoutX="153.0" layoutY="99.0" prefHeight="200.0" prefWidth="265.0">
+         <content>
+            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: lightgray;" />
+         </content>
+      </ScrollPane>
+      <Button layoutX="205.0" layoutY="319.0" mnemonicParsing="false" onMouseClicked="#click_register" prefHeight="32.0" prefWidth="100.0" text="상품 추가" />
+      <Button layoutX="153.0" layoutY="319.0" mnemonicParsing="false" onMouseClicked="#click_back" prefHeight="32.0" prefWidth="40.0" text="뒤로" />
+      <Button layoutX="318.0" layoutY="319.0" mnemonicParsing="false" onMouseClicked="#click_manage" prefHeight="32.0" prefWidth="100.0" text="상품 관리" />
+   </children>
+</AnchorPane>

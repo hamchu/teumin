@@ -87,16 +87,27 @@ public class ManageListController extends Client {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
 
-        initialize();
+        initialize(); // TruckInfo 관리는 최신화 필요
     }
 
     @FXML
-    void click_manageItem(MouseEvent event) {
+    void click_manageItem(MouseEvent event) throws Exception {
+        Data data = new Data();
+        data.add("InquiryItemsByTruckName");
+        data.add(text_name.getText());
+        network.write(data);
 
+        Stage stage = new Stage();
+        stage.setTitle("푸드트럭 정보 관리");
+        stage.getIcons().add(loadImage("teumin.png"));
+        stage.setScene(new Scene(loadFxml("seller/manageTruck/manageItem/ManageItemsView.fxml")));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     @FXML
-    void click_manageSalesInfo(MouseEvent event) {
+    void click_manageSalesInfo(MouseEvent event) throws Exception {
 
     }
 
