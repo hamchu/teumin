@@ -81,7 +81,7 @@ public class RecruitMainController extends Client {
         Stage stage = (Stage) recruit_list.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("admin/ManageItemsView.fxml")));
+        stage.setScene(new Scene(loadFxml("admin/MainView.fxml")));
         stage.show();
     }
 

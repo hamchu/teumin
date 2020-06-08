@@ -90,7 +90,7 @@ public class ApproveTruckController extends Client {
         Stage stage = (Stage) vBox.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("admin/ManageItemsView.fxml")));
+        stage.setScene(new Scene(loadFxml("admin/MainView.fxml")));
         stage.show();
     }
 

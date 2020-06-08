@@ -80,7 +80,7 @@ public class ManageTruckController extends Client {
         Stage stage = (Stage) vBox.getScene().getWindow();
         stage.close();
 
-        stage.setScene(new Scene(loadFxml("seller/ManageItemsView.fxml")));
+        stage.setScene(new Scene(loadFxml("seller/MainView.fxml")));
         stage.show();
     }
 
