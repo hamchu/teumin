@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.manageSalesInfo.ManageSalesInfoController">
+   <children>
+      <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#click_back" text="뒤로" />
+      <TableView fx:id="sales_info_list" layoutX="21.0" layoutY="52.0" prefHeight="295.0" prefWidth="558.0">
+        <columns>
+          <TableColumn prefWidth="76.66668891906738" text="날짜" />
+          <TableColumn prefWidth="143.33330535888672" text="영업시간">
+               <columns>
+                  <TableColumn prefWidth="66.6666259765625" text="시작" />
+                  <TableColumn prefWidth="65.33338928222656" text="종료" />
+               </columns>
+            </TableColumn>
+            <TableColumn prefWidth="92.00001525878906" text="영업하는 트럭" />
+            <TableColumn prefWidth="253.99996948242188" text="주소" />
+        </columns>
+      </TableView>
+      <HBox layoutX="391.0" layoutY="356.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#click_register" text="영업일정등록" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_update" text="수정" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_delete" text="삭제" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

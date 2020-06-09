@@ -17,6 +17,7 @@ public class InquiryAllRecruit extends Transaction {
 
     @Override
     public void execute(Data data) throws Exception {
+        // param : 없음
 
         // 조건 검사 : 관리자, 영업자 권한 아닐 시 접속 끊기
         if (account.getType() != 0) {

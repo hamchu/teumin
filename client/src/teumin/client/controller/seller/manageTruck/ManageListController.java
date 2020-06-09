@@ -108,7 +108,18 @@ public class ManageListController extends Client {
 
     @FXML
     void click_manageSalesInfo(MouseEvent event) throws Exception {
+        Data data = new Data();
+        data.add("InquirySalesInfosByTruckName");
+        data.add(text_name.getText());
+        network.write(data);
 
+        Stage stage = new Stage();
+        stage.setTitle("푸드트럭 영업일정 관리");
+        stage.getIcons().add(loadImage("teumin.png"));
+        stage.setScene(new Scene(loadFxml("seller/manageTruck/manageSalesInfo/ManageSalesInfoView.fxml")));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     @FXML
