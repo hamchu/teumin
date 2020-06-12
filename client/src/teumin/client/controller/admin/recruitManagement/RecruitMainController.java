@@ -50,7 +50,7 @@ public class RecruitMainController extends Client {
                 super.updateItem(item, empty);
                 if (item == null || item.getName() == null) {
                     setStyle("");
-                } else if (item.getRecruit_begin().isBefore(now_date) && item.getRecruit_end().compareTo(now_date)>=0) {
+                } else if (item.getRecruit_begin().compareTo(now_date)<=0 && item.getRecruit_end().compareTo(now_date)>=0) {
                     setStyle("-fx-background-color: #BAFFBA;");
                 } else if (item.getRecruit_end().isBefore(now_date)) {
                     setStyle("-fx-background-color: #FAC1C1;");
