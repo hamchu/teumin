@@ -21,7 +21,7 @@ public class ManageItemsController extends Client {
     private VBox vBox;
 
     ArrayList<HBox> hBoxes = new ArrayList<>();
-    ArrayList<Item> items = new ArrayList<>();
+    ArrayList<Item> items = null;
     Integer targetItemIndex = null;
 
     @FXML
@@ -35,7 +35,8 @@ public class ManageItemsController extends Client {
             hBox.setAlignment(Pos.CENTER_LEFT);
             Text text = new Text(items.get(i).getName());
             Text index = new Text(i + "");
-            hBox.getChildren().addAll(text);
+            index.setVisible(false);
+            hBox.getChildren().addAll(text, index);
             hBoxes.add(hBox);
             hBox.setOnMouseClicked(e -> {
                 for (HBox unit : hBoxes) {

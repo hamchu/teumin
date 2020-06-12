@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.manageSalesInfo.ManageSalesInfoController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.manageTruck.manageSalesInfo.ManageSalesInfoController">
    <children>
       <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#click_back" text="뒤로" />
       <TableView fx:id="sales_info_list" layoutX="21.0" layoutY="52.0" prefHeight="295.0" prefWidth="558.0">
