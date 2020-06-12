@@ -86,12 +86,13 @@ public class UpdateTruck extends Transaction {
                     }
                 }
 
-                String sql2 = "update truck set introduction=?, explanation=?, category=?, icon=?";
+                String sql2 = "update truck set introduction=?, explanation=?, category=?, icon=? where name=?";
                 PreparedStatement pstmt2 = connection.prepareStatement(sql2);
                 pstmt2.setString(1, truck.getIntroduction());
                 pstmt2.setString(2, truck.getExplanation());
                 pstmt2.setString(3, truck.getCategory());
                 pstmt2.setObject(4, truck.getIcon().getBytes());
+                pstmt2.setString(5, truck.getName());
                 pstmt2.executeUpdate();
 
                 success = true;

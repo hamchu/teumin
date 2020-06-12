@@ -98,7 +98,7 @@ public class ManageListController extends Client {
         network.write(data);
 
         Stage stage = new Stage();
-        stage.setTitle("푸드트럭 정보 관리");
+        stage.setTitle("푸드트럭 상품 관리");
         stage.getIcons().add(loadImage("teumin.png"));
         stage.setScene(new Scene(loadFxml("seller/manageTruck/manageItem/ManageItemsView.fxml")));
         stage.setResizable(false);

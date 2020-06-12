@@ -2,7 +2,6 @@ package teumin.server.transaction;
 
 import teumin.entity.Bytes;
 import teumin.entity.Item;
-import teumin.entity.Truck;
 import teumin.network.Data;
 import teumin.network.Network;
 import teumin.server.Transaction;
@@ -14,8 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class InquiryItemsByTruckName extends Transaction {
-    public InquiryItemsByTruckName(Network network, Account account) {
+public class InquiryItemByTruckNameAndItemName extends Transaction {
+    public InquiryItemByTruckNameAndItemName(Network network, Account account) {
         super(network, account);
     }
 
@@ -23,35 +22,34 @@ public class InquiryItemsByTruckName extends Transaction {
     public void execute(Data data) throws Exception {
         // param
         String truckName = data.get(1);
+        String itemName = data.get(2);
 
         // return
-        //truckName
-        ArrayList<Item> items = new ArrayList<>();
+        Item item = null;
 
         // 조건 검사 : 없음
 
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
-            String sql = "select * from item where truck_name=?";
+            String sql = "select * from item where truck_name=? and name=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, truckName);
+            pstmt.setString(2, itemName);
             ResultSet resultSet = pstmt.executeQuery();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
 
-                String name = resultSet.getString("name");
                 Integer price = resultSet.getInt("price");
                 Bytes image = new Bytes(resultSet.getObject("image", byte[].class));
                 String introduction = resultSet.getString("introduction");
                 String explanation = resultSet.getString("explanation");
 
-                items.add(new Item(truckName, name, price, image, introduction, explanation));
+                item = new Item(truckName, itemName, price, image, introduction, explanation);
             }
         }
 
         data = new Data();
-        data.add(truckName);
-        data.add(items);
+        data.add(item);
         network.write(data);
     }
 }

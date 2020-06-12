@@ -3,10 +3,12 @@ package teumin.client.controller.seller.manageTruck.manageItem;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.entity.Item;
@@ -20,14 +22,19 @@ public class ManageItemsController extends Client {
     @FXML
     private VBox vBox;
 
-    ArrayList<HBox> hBoxes = new ArrayList<>();
+    String truckName = null;
+    ArrayList<HBox> hBoxes = null;
     ArrayList<Item> items = null;
     Integer targetItemIndex = null;
 
     @FXML
     void initialize() throws Exception {
+        vBox.getChildren().clear();
+        hBoxes = new ArrayList<>();
+        targetItemIndex = null;
         Data data = network.read();
-        items = data.get(0);
+        truckName = data.get(0);
+        items = data.get(1);
 
         for (int i = 0; i < items.size(); i++) {
             HBox hBox = new HBox();
@@ -55,12 +62,56 @@ public class ManageItemsController extends Client {
     }
 
     @FXML
-    void click_manage(MouseEvent event) {
+    void click_register(MouseEvent event) throws Exception {
 
+        Data data = new Data();
+        data.add("HandleTruckName");
+        data.add(truckName);
+        network.write(data);
+
+        Stage stage = new Stage();
+        stage.setTitle("푸드트럭 정보 관리");
+        stage.getIcons().add(loadImage("teumin.png"));
+        stage.setScene(new Scene(loadFxml("seller/manageTruck/manageItem/RegisterItemView.fxml")));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+        // 처리 후 기존 화면 최신화
+        data = new Data();
+        data.add("InquiryItemsByTruckName");
+        data.add(truckName);
+        network.write(data);
+        initialize();
     }
 
     @FXML
-    void click_register(MouseEvent event) {
+    void click_manage(MouseEvent event) throws Exception {
+
+        if (targetItemIndex == null) {
+            return;
+        }
+
+        Data data = new Data();
+        data.add("InquiryItemByTruckNameAndItemName");
+        data.add(truckName);
+        data.add(items.get(targetItemIndex).getName());
+        network.write(data);
+
+        Stage stage = new Stage();
+        stage.setTitle("푸드트럭 정보 관리");
+        stage.getIcons().add(loadImage("teumin.png"));
+        stage.setScene(new Scene(loadFxml("seller/manageTruck/manageItem/UpdateItemView.fxml")));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+        // 처리 후 기존 화면 최신화
+        data = new Data();
+        data.add("InquiryItemsByTruckName");
+        data.add(truckName);
+        network.write(data);
+        initialize();
 
     }
 
