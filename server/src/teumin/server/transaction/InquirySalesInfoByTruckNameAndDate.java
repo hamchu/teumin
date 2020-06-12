@@ -1,6 +1,7 @@
 package teumin.server.transaction;
 
-import teumin.entity.*;
+import teumin.entity.Address;
+import teumin.entity.SalesInfo;
 import teumin.network.Data;
 import teumin.network.Network;
 import teumin.server.Transaction;
@@ -12,43 +13,44 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
-public class InquirySalesInfosByTruckName extends Transaction {
-    public InquirySalesInfosByTruckName(Network network, Account account) { super(network, account); }
+public class InquirySalesInfoByTruckNameAndDate extends Transaction {
+    public InquirySalesInfoByTruckNameAndDate(Network network, Account account) {
+        super(network, account);
+    }
 
     @Override
     public void execute(Data data) throws Exception {
         // param
         String truckName = data.get(1);
+        LocalDate date = (LocalDate) data.get(2);
 
         // return
-        ArrayList<SalesInfo> salesInfo_list = new ArrayList<>();
+        SalesInfo salesInfo = null;
 
         // 조건 검사 : 없음
 
         // DB 연동
         Connection connection = Database.getConnection();
         synchronized (connection) {
-            String sql = "select * from sales_info where truck_name=? order by date desc";
+            String sql = "select * from sales_info where truck_name=? and date=?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, truckName);
+            pstmt.setObject(2, date);
             ResultSet resultSet = pstmt.executeQuery();
-            while (resultSet.next()) {
-                LocalDate date = resultSet.getObject("date", LocalDate.class);
+            if (resultSet.next()) {
                 LocalTime begin = resultSet.getObject("begin", LocalTime.class);
                 LocalTime end = resultSet.getObject("end", LocalTime.class);
                 String addressName = resultSet.getString("address");
                 Double x = resultSet.getDouble("x");
                 Double y = resultSet.getDouble("y");
 
-                salesInfo_list.add(new SalesInfo(truckName, date, begin, end, new Address(addressName,x,y)));
+                salesInfo = new SalesInfo(truckName, date, begin, end, new Address(addressName,x,y));
             }
         }
 
         data = new Data();
-        data.add(truckName);
-        data.add(salesInfo_list);
+        data.add(salesInfo);
         network.write(data);
     }
 }

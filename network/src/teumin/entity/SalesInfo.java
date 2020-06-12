@@ -1,10 +1,11 @@
 package teumin.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class SalesInfo {
+public class SalesInfo implements Serializable {
     String truckName;
     LocalDate date;
     LocalTime begin;
@@ -39,7 +40,7 @@ public class SalesInfo {
         return address;
     }
 
-    public String getName() {
+    public String getAddressName() {
         return address.getName();
     }
 

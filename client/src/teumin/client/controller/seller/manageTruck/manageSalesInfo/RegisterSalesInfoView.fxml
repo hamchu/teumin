@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.manageTruck.manageSalesInfo.RegisterSalesInfoController">
+   <children>
+      <DatePicker fx:id="date" layoutX="138.0" layoutY="37.0" prefHeight="29.0" prefWidth="139.0" />
+      <Text layoutX="67.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="영업날짜" />
+      <HBox alignment="CENTER" layoutX="67.0" layoutY="94.0" spacing="10.0">
+         <children>
+            <Text layoutX="57.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="영업시간" />
+            <HBox alignment="CENTER" layoutX="127.0" layoutY="124.0" spacing="3.0">
+               <children>
+                  <ComboBox fx:id="begin_hour" layoutX="127.0" layoutY="124.0" prefHeight="29.0" prefWidth="68.0" />
+                  <Text layoutX="206.0" layoutY="144.2529296875" strokeType="OUTSIDE" strokeWidth="0.0" text="시" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="231.0" layoutY="124.0" spacing="3.0">
+               <children>
+                  <ComboBox fx:id="begin_minute" layoutX="231.0" layoutY="124.0" prefHeight="29.0" prefWidth="68.0" />
+                  <Text layoutX="310.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="분" />
+               </children>
+            </HBox>
+            <Text layoutX="335.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ~ " />
+            <HBox alignment="CENTER" layoutX="364.0" layoutY="124.0" spacing="3.0">
+               <children>
+                  <ComboBox fx:id="end_hour" layoutX="364.0" layoutY="124.0" prefHeight="29.0" prefWidth="68.0" />
+                  <Text layoutX="443.0" layoutY="144.2529296875" strokeType="OUTSIDE" strokeWidth="0.0" text="시" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="468.0" layoutY="124.0" spacing="3.0">
+               <children>
+                  <ComboBox fx:id="end_minute" layoutX="468.0" layoutY="124.0" prefHeight="29.0" prefWidth="68.0" />
+                  <Text layoutX="547.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="분" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Text layoutX="31.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="영업구역 주소" />
+      <TextField fx:id="text_address" editable="false" layoutX="138.0" layoutY="156.0" prefHeight="29.0" prefWidth="257.0" />
+      <Button layoutX="408.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#click_queryAddress" text="검색" />
+      <Button layoutX="402.0" layoutY="246.0" mnemonicParsing="false" onMouseClicked="#click_register" text="등록" />
+      <Button layoutX="480.0" layoutY="246.0" mnemonicParsing="false" onMouseClicked="#click_cancel" text="취소" />
+      <TextField fx:id="text_detail_address" layoutX="138.0" layoutY="195.0" prefHeight="29.0" prefWidth="320.0" promptText="상세주소입력" />
+   </children>
+</AnchorPane>
