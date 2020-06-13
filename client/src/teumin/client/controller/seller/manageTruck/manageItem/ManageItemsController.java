@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -89,6 +90,13 @@ public class ManageItemsController extends Client {
     void click_manage(MouseEvent event) throws Exception {
 
         if (targetItemIndex == null) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("알림");
+            alert.setHeaderText(null);
+            alert.setContentText("항목을 선택해주세요.");
+            alert.showAndWait();
+
             return;
         }
 

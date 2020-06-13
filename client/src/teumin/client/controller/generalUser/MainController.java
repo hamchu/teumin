@@ -12,7 +12,10 @@ import teumin.client.util.addressQueryWindow.AddressQueryWindow;
 import teumin.client.util.categoryPickWindow.CategoryPickWindow;
 import teumin.entity.Address;
 import teumin.entity.Truck;
+import teumin.entity.TruckWithSalesInfo;
 import teumin.network.Data;
+
+import java.util.ArrayList;
 
 public class MainController extends Client {
 
@@ -48,7 +51,7 @@ public class MainController extends Client {
     }
 
     @FXML
-    void click_queryTrucks(MouseEvent event) {
+    void click_queryTrucks(MouseEvent event) throws Exception {
 
         if (address == null || category == null) {
 
@@ -62,16 +65,24 @@ public class MainController extends Client {
 
         }
 
+        Data data = new Data();
+        data.add("QueryTruck");
+        data.add(category);
+        network.write(data);
+
+        data = network.read();
+        ArrayList<TruckWithSalesInfo> truckWithSalesInfos =  data.get(0);
+
         /**
          *
          *
+         * truckWithSalesInfos 녀석들 영업 중인가 아닌가로 정렬
+         * 영업 중인 놈들은 거리 순으로 정렬
          *
-         *
+         * 그 결과 데이터를 ListView로 전달하여 적절하게 표시하고 클릭 이벤트 적용
          *
          *
          */
-
-
     }
 
     @FXML
