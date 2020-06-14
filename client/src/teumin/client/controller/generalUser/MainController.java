@@ -80,7 +80,7 @@ public class MainController extends Client {
         sortTruckWithSalesInfo(truckWithSalesInfos);
 
         Stage stage = new Stage();
-        stage.setTitle("트럭의민족");
+        stage.setTitle("푸드트럭 리스트");
         stage.getIcons().add(loadImage("teumin.png"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("queryTruck/TruckListView.fxml"));
         stage.setScene(new Scene(loader.load()));

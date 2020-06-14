@@ -1,20 +1,25 @@
 package teumin.client.controller.generalUser.queryTruck;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teumin.client.Client;
 import teumin.entity.TruckWithSalesInfo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TruckListController extends Client {
@@ -35,6 +40,7 @@ public class TruckListController extends Client {
             VBox listBox = new VBox();
             listBoxes.add(listBox);
             vBox.getChildren().add(listBox);
+            vBox.getChildren().add(new Line(0, 0, vBox.getPrefWidth(), 0));
 
             listBox.setPadding(new Insets(10));
             listBox.setSpacing(0);
@@ -91,7 +97,7 @@ public class TruckListController extends Client {
     }
 
     @FXML
-    void click_inquiry(MouseEvent event) {
+    void click_inquiry(MouseEvent event) throws Exception {
 
         if (targetTruckIndex == null) {
 
@@ -105,14 +111,18 @@ public class TruckListController extends Client {
         }
 
 
-        System.out.println(truckWithSalesInfos.get(targetTruckIndex).getName());
-        /**
-         *
-         *
-         * ....
-         *
-         *
-         */
+        Stage stage = new Stage();
+        stage.setTitle(truckWithSalesInfos.get(targetTruckIndex).getName());
+        stage.getIcons().add(loadImage("teumin.png"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("TruckDetailView.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        {
+            TruckDetailController truckDetailController = loader.getController();
+            truckDetailController.initBy(truckWithSalesInfos.get(targetTruckIndex).getName());
+        }
+        stage.show();
 
     }
 

@@ -13,9 +13,9 @@
    <children>
       <Pane layoutX="15.0" layoutY="14.0" prefHeight="84.0" prefWidth="571.0" style="-fx-background-color: #AAAAAA;">
          <children>
-            <Text fx:id="text_name" layoutX="79.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[푸드트럭 이름]">
+            <Text fx:id="text_name" layoutX="77.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TruckName">
                <font>
-                  <Font size="16.0" />
+                  <Font size="20.0" />
                </font>
             </Text>
             <Pane layoutX="14.0" layoutY="15.0" style="-fx-background-color: gray;">
@@ -23,7 +23,7 @@
                   <ImageView fx:id="img_icon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" smooth="false" />
                </children>
             </Pane>
-            <Text fx:id="text_introduction" layoutX="79.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[한 줄 설명]" />
+            <Text fx:id="text_introduction" layoutX="79.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="introduction" />
          </children>
       </Pane>
       <VBox layoutX="83.0" layoutY="165.0" spacing="10.0">

@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -48,6 +49,7 @@ public class ManageTruckController extends Client {
                 targetTruckName = text.getText();
             });
             vBox.getChildren().add(hBox);
+            vBox.getChildren().add(new Line(0, 0, vBox.getPrefWidth(), 0));
         }
     }
 
