@@ -55,7 +55,6 @@ public class ManageItemsController extends Client {
                 targetItemIndex = Integer.parseInt(index.getText());
             });
             vBox.getChildren().add(hBox);
-            vBox.getChildren().add(new Line(0, 0, vBox.getPrefWidth(), 0));
         }
     }
 
