@@ -1,6 +1,7 @@
 package teumin.server.transaction;
 
 import teumin.entity.Item;
+import teumin.entity.Recruit;
 import teumin.network.Data;
 import teumin.network.Network;
 import teumin.server.Transaction;
@@ -18,7 +19,8 @@ public class DeleteRecruit extends Transaction {
     @Override
     public void execute(Data data) throws Exception {
         // param
-        Item item = data.get(1);
+        int recruitNumber = data.get(1);
+
         // return
         boolean success = false;
 
