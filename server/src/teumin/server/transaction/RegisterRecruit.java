@@ -32,7 +32,7 @@ public class RegisterRecruit extends Transaction {
                 !recruit.getName().replaceAll(" ", "").replaceAll("\t", "").equals("") &&
                         recruit.getName().matches("^.{2,32}$") &&
                         recruit.getAddress().matches("^.{2,128}$") &&
-                        recruit.getExplanation().matches("^.{2,256}$") &&
+                        (recruit.getExplanation().length() >= 2 && recruit.getExplanation().length() <= 256) &&
                         recruit.getReference_url().matches("^.{3,256}$") &&
                         recruit.getRecruit_begin() != null &&
                         recruit.getRecruit_end() != null &&
