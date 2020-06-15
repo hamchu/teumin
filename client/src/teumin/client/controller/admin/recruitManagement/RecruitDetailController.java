@@ -39,6 +39,7 @@ public class RecruitDetailController extends Client {
 
     @FXML
     private Label reference_url;
+
     @FXML
     public void initialize() throws Exception {
         Data data = network.read();

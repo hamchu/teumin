@@ -40,8 +40,8 @@ public class UpdateItem extends Transaction {
 
                 !item.getName().replaceAll(" ", "").replaceAll("\t", "").equals("") &&
                         item.getName().matches("^.{2,16}$") &&
-                        item.getIntroduction().matches("^.{2,32}$") &&
-                        (item.getExplanation().length() >= 2 && item.getExplanation().length() <= 64)
+                        item.getIntroduction().matches("^.{2,64}$") &&
+                        (item.getExplanation().length() >= 2 && item.getExplanation().length() <= 256)
         )) {
             data = new Data();
             data.add(success);

@@ -30,7 +30,7 @@ public class RegisterSalesInfo extends Transaction {
         // 조건 검사 : 주소 길이 검사, 입력란 누락 검사
         if (!(
                     salesInfo.getAddress() !=null &&
-                            salesInfo.getAddressName().matches("^.{2,64}$") &&
+                            salesInfo.getAddressName().matches("^.{2,256}$") &&
                                 salesInfo.getDate() !=null &&
                                 salesInfo.getBegin() !=null &&
                                 salesInfo.getEnd() !=null &&

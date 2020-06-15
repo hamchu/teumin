@@ -41,8 +41,8 @@ public class RegisterTruck extends Transaction {
 
                 !truck.getName().replaceAll(" ", "").replaceAll("\t", "").equals("") &&
                 truck.getName().matches("^.{2,16}$") &&
-                                truck.getIntroduction().matches("^.{2,32}$") &&
-                                (truck.getExplanation().length() >= 2 && truck.getExplanation().length() <= 64) &&
+                                truck.getIntroduction().matches("^.{2,64}$") &&
+                                (truck.getExplanation().length() >= 2 && truck.getExplanation().length() <= 256) &&
                                 truck.getCategory() != null
         )) {
             data = new Data();

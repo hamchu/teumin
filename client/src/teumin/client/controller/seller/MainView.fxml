@@ -2,14 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teumin.client.controller.seller.MainController">
    <children>
-      <Button layoutX="29.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#click_registerTruck" text="푸드트럭 등록" />
-      <Button layoutX="29.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#click_inquiryRecruit" prefHeight="22.0" prefWidth="147.0" text="허가구역 모집 공고 확인" />
-      <Button layoutX="29.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#click_manageTruck" text="푸드트럭 관리" />
+      <VBox layoutX="74.0" layoutY="85.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#click_registerTruck" prefHeight="50.0" prefWidth="453.0" text="푸드트럭 등록" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_manageTruck" prefHeight="50.0" prefWidth="453.0" text="푸드트럭 관리" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_inquiryRecruit" prefHeight="50.0" prefWidth="453.0" text="허가구역 모집 공고 확인" />
+            <Button mnemonicParsing="false" onMouseClicked="#click_logout" prefHeight="50.0" prefWidth="453.0" text="로그아웃" />
+         </children>
+      </VBox>
       <Text layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="영업자 메인" />
-      <Button layoutX="29.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#click_logout" text="로그아웃" />
    </children>
 </AnchorPane>
