@@ -29,10 +29,10 @@ public class UpdateRecruit extends Transaction {
             return;
         }
 
-        //조건 검사 : 각 타입별 형식 및 이름은 2~16자, 주소는 2~64자, 설명은 8~32자, url은 3~160자, 날짜 순서 올바른지 여부
+        //조건 검사 : 각 타입별 형식 및 이름은 2~64자, 주소는 2~64자, 설명은 8~32자, url은 3~160자, 날짜 순서 올바른지 여부
         if (!(
                 !recruit.getName().replaceAll(" ", "").replaceAll("\t", "").equals("") &&
-                        recruit.getName().matches("^.{2,32}$") &&
+                        recruit.getName().matches("^.{2,64}$") &&
                         recruit.getAddress().matches("^.{2,128}$") &&
                         (recruit.getExplanation().length() >= 2 && recruit.getExplanation().length() <= 1024) &&
                         recruit.getReference_url().matches("^.{3,256}$") &&
