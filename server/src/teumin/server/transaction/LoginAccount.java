@@ -54,7 +54,7 @@ public class LoginAccount extends Transaction {
         synchronized (accounts) {
             for (Account account : accounts) {
                 if (account.getId() == null) continue;
-                if (account.getId() == id) {
+                if (account.getId().equals(id)) {
                     success = false;
                     break;
                 }
